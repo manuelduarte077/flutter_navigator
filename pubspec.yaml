@@ -10,8 +10,10 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+  faker: ^2.1.0
   flutter:
     sdk: flutter
+  go_router: ^6.0.0
 
 dev_dependencies:
   flutter_test:
