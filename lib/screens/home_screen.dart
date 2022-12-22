@@ -63,6 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
                       vertical: 8,
                     ),
                     child: Image.network(
