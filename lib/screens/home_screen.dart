@@ -1,7 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_navigator/app/app.dart';
 import 'package:flutter_navigator/models/product.dart';
-import 'package:flutter_navigator/screens/product_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -43,11 +43,10 @@ class _HomeScreenState extends State<HomeScreen> {
           final product = _list[index];
           return GestureDetector(
             onTap: () {
-              Navigator.of(context).push(
-                CupertinoPageRoute(
-                  builder: (context) => ProductScreen(
-                    id: product.id,
-                  ),
+              final myAppState = context.findAncestorStateOfType<MyAppState>();
+              myAppState?.delegate.setNewRoutePath(
+                Uri.parse(
+                  '/product/${product.id}',
                 ),
               );
             },
@@ -74,7 +73,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Text(
                     product.name,
-                    style: const TextStyle(fontSize: 24),
+                    style: const TextStyle(
+                      fontSize: 24,
+                      color: CupertinoColors.black,
+                    ),
                   ),
                 ],
               ),
