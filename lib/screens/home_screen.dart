@@ -43,9 +43,12 @@ class _HomeScreenState extends State<HomeScreen> {
           final product = _list[index];
           return GestureDetector(
             onTap: () {
-              final myAppState =
-                  context.findRootAncestorStateOfType<MyAppState>();
-              myAppState?.setProductId(product.id);
+              final myAppState = context.findAncestorStateOfType<MyAppState>();
+              myAppState?.delegate.setNewRoutePath(
+                Uri.parse(
+                  '/product/${product.id}',
+                ),
+              );
             },
             child: Container(
               height: 100,
@@ -69,7 +72,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Text(
                     product.name,
-                    style: const TextStyle(fontSize: 24),
+                    style: const TextStyle(
+                      fontSize: 24,
+                      color: CupertinoColors.black,
+                    ),
                   ),
                 ],
               ),
